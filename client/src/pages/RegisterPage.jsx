@@ -7,9 +7,9 @@ import Button from '../components/ui/Button';
 const RegisterPage = () => {
   const { register } = useAuth();
   const navigate = useNavigate();
-  const [form,  setForm]  = useState({ name: '', email: '', password: '' });
+  const [form, setForm] = useState({ name: '', email: '', password: '' });
   const [error, setError] = useState('');
-  const [busy,  setBusy]  = useState(false);
+  const [busy, setBusy] = useState(false);
 
   const handleChange = (e) => setForm((p) => ({ ...p, [e.target.name]: e.target.value }));
 
@@ -30,7 +30,7 @@ const RegisterPage = () => {
     <div className="min-h-screen flex items-center justify-center bg-gray-950 px-4">
       <div className="card w-full max-w-md p-8">
         <div className="mb-8 text-center">
-          <h1 className="text-3xl font-bold text-white">GVCC <span className="text-brand-500">Learn</span></h1>
+          <h1 className="text-3xl font-bold text-white">Learning <span className="text-brand-500">Portal</span></h1>
           <p className="text-gray-400 mt-2 text-sm">Create your account</p>
         </div>
 
@@ -41,9 +41,9 @@ const RegisterPage = () => {
         )}
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-          <Input id="reg-name"     name="name"     label="Full Name" value={form.name}     onChange={handleChange} autoComplete="name"     required />
-          <Input id="reg-email"    name="email"    label="Email"     type="email" value={form.email}    onChange={handleChange} autoComplete="email"    required />
-          <Input id="reg-password" name="password" label="Password"  type="password" value={form.password} onChange={handleChange} autoComplete="new-password" required />
+          <Input id="reg-name" name="name" label="Full Name" value={form.name} onChange={handleChange} autoComplete="name" required />
+          <Input id="reg-email" name="email" label="Email" type="email" value={form.email} onChange={handleChange} autoComplete="email" required />
+          <Input id="reg-password" name="password" label="Password" type="password" value={form.password} onChange={handleChange} autoComplete="new-password" required />
           <Button type="submit" variant="primary" disabled={busy} className="mt-2 w-full py-2.5">
             {busy ? 'Creating account…' : 'Create Account'}
           </Button>

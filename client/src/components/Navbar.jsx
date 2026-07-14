@@ -4,9 +4,9 @@ import Button from './ui/Button';
 import Badge from './ui/Badge';
 
 const NAV_LINKS = [
-  { to: '/',          label: 'Dashboard' },
+  { to: '/', label: 'Dashboard' },
   { to: '/bookmarks', label: 'Bookmarks' },
-  { to: '/profile',   label: 'Profile'   },
+  { to: '/profile', label: 'Profile' },
 ];
 
 const Navbar = () => {
@@ -24,7 +24,7 @@ const Navbar = () => {
 
         {/* Brand */}
         <Link to="/" className="text-xl font-bold text-white tracking-tight">
-          GVCC <span className="text-brand-500">Learn</span>
+          Learning <span className="text-brand-500">Portal</span>
         </Link>
 
         {/* Nav links */}
@@ -35,10 +35,9 @@ const Navbar = () => {
                 to={to}
                 end={to === '/'}
                 className={({ isActive }) =>
-                  `px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
-                    isActive
-                      ? 'bg-brand-600/20 text-brand-400'
-                      : 'text-gray-400 hover:text-white hover:bg-gray-800'
+                  `px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${isActive
+                    ? 'bg-brand-600/20 text-brand-400'
+                    : 'text-gray-400 hover:text-white hover:bg-gray-800'
                   }`
                 }
               >
@@ -51,8 +50,7 @@ const Navbar = () => {
               <NavLink
                 to="/admin"
                 className={({ isActive }) =>
-                  `px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
-                    isActive ? 'bg-brand-600/20 text-brand-400' : 'text-gray-400 hover:text-white hover:bg-gray-800'
+                  `px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${isActive ? 'bg-brand-600/20 text-brand-400' : 'text-gray-400 hover:text-white hover:bg-gray-800'
                   }`
                 }
               >

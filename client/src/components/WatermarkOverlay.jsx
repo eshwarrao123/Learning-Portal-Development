@@ -1,27 +1,37 @@
 import useAuth from '../hooks/useAuth';
 
 /**
- * Diagonal semi-transparent user email watermark.
- * Pointer-events: none so it never blocks interaction.
+ * Diagonal repeating watermark overlay.
+ * - 25% opacity, text-lg font, shows "Name | email"
+ * - pointer-events: none — never blocks video interaction
  */
 const WatermarkOverlay = () => {
   const { user } = useAuth();
-  const email = user?.email || '';
+  const label = user
+    ? `${user.name || ''} | ${user.email || ''}`.trim().replace(/^\|/, '').trim()
+    : '';
+
+  if (!label) return null;
 
   return (
     <div
       aria-hidden="true"
       className="absolute inset-0 z-10 pointer-events-none no-select overflow-hidden"
     >
-      {/* Repeated watermark grid */}
-      <div className="w-full h-full grid grid-cols-3 grid-rows-4 gap-0">
-        {Array.from({ length: 12 }).map((_, i) => (
+      {/* 4×4 = 16 tiles, each rotated -30° */}
+      <div className="w-full h-full grid grid-cols-4 grid-rows-4 gap-0">
+        {Array.from({ length: 16 }).map((_, i) => (
           <span
             key={i}
-            className="flex items-center justify-center text-white/10 text-xs font-medium"
-            style={{ transform: 'rotate(-30deg)', whiteSpace: 'nowrap' }}
+            className="flex items-center justify-center text-white text-lg font-semibold"
+            style={{
+              opacity: 0.25,
+              transform: 'rotate(-30deg)',
+              whiteSpace: 'nowrap',
+              textShadow: '0 1px 3px rgba(0,0,0,0.8)',
+            }}
           >
-            {email}
+            {label}
           </span>
         ))}
       </div>
